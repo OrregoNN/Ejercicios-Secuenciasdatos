@@ -1,0 +1,40 @@
+https://aed-frre.github.io/practica/2.2/#ejercicio-221
+
+Accion EjercicioArchivos es
+    Ambiente
+        Alumno = Registro
+                    Apellido_y_Nombre: AN (20)
+                    Carrera: AN(3)
+                    Legajo: Entero
+            
+                    Dia_Nacimiento: 1..12
+                    Mes_Nacimiento: 1..31
+                    Anio: Entero
+            
+                    Dia_Ingreso: 1..12
+                    Mes_Ingreso: 1..31
+                    Anio: Entero
+           
+                    DNI: N(8)
+                    Fecha_ult_ex_aprobado:
+                    Nota: Real
+                 Fin_Registro
+        
+        Archivo_alumnos: Archivo de alumnos //Secuencia
+        reg_alumno:Alumno                   //Ventana
+    
+    Proceso
+        Arrancar(Sec)   | Crear(Sec)
+        Abrir E/(Archivo_alumnos)
+        Leer(Archivo_Alumnos, reg_alumno)
+        
+        Escribir("Nro de legajo, Apellido y Nombre, Documento, Carrera")
+        Escribir("----------------------------------------------------")
+        
+        Mientras NFDA(Archivo_alumnos) hacer
+            Escribir(reg_alumnos.legajo, reg_alumnos.apellido_y_nombre, reg_alumno.dni, reg_alumno.carrera)
+            Leer(archivo_alumnos, reg_alumno)
+        Fin_Mientras
+        
+        Cerrar(Archivo_alumnos)
+Fin_Accion

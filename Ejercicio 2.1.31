@@ -1,1 +1,17 @@
+https://aed-frre.github.io/practica/2.1/#ejercicio-2131
+
 Acción Ej2.1.31 es
+  Ambiente
+    Tickets, Salida:secuencia de caracteres
+    t, m1, m2: Caracter
+    TotalVend, TotalEven, TotalGene: N(3) 
+    PorcVed, PorcEven: Real
+   
+   Proceso
+    Arrancar(Tickets)
+    Avz(Tickets,t)
+    Escribir("Por favor ingrese los 2 caracteres del mes que desea tratar")
+    Leer(m1,m2)
+    Crear(Salida)
+
+    Mientras No FDS(Tickets) hacer

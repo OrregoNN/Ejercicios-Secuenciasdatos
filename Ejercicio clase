@@ -1,0 +1,28 @@
+Accion EJERCICIO es
+  Ambiente
+     Sec, Sal: secuencia de caracteres
+     V, Resg: caracteres
+     Cont_Pal: entero
+     
+  Proceso
+     Arrancar(Sec)
+     Avz(Sec,V)
+     Cont_Pal:=0
+     
+     Mientras NFDS(Sec) hacer
+      Mientras V=" " hacer
+        Avz(Sec,V)
+      Fin_Mientras
+      
+      Mientras NFDS(Sec) y V<> " " hacer
+        Resg:=V
+        Escribir(Sec,V)
+      Fin_Mientras
+      
+      Si Resg = "A" entonces
+        Cont:= Cont_Pal+1
+      Fin_Si
+     Fin_Mientras
+		 
+		 Escribir("La cantidad de palabras que terminaron con la letra S es de:", Cont_Pal)
+Fin_Accion

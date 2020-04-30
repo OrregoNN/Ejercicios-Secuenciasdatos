@@ -1,0 +1,21 @@
+https://aed-frre.github.io/practica/2.2/#ejercicio-223
+Accion 2.2.3 es
+  Ambiente
+    Socios = Registro
+      Nro_de_Socio: Entero
+      Nro_de_Telefono: Entero
+      Apellido_y_Nombre: AN (30)
+      Carrera: AN(3)
+      Domicilio:AN
+      Cantidad_de_Unidades_Prestadas: Entero
+   Fin_Registro
+  archivo_de_socios, archivo_de_socios_isi: Archivo de Socios
+  Reg_Socios:Socios
+  
+  Proceso
+  Abrir/E(Archivo_Socios)
+  Leer(Archivo_socios, Reg_Socios)
+  Abrir/S (Archivo_socio_isi)
+  
+  Mientras NFDA (Archivo_socios) hacer
+    Si (Reg_Socios.Carrera = "ISI") y (reg_socios

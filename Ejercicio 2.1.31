@@ -3,15 +3,104 @@ https://aed-frre.github.io/practica/2.1/#ejercicio-2131
 Acción Ej2.1.31 es
   Ambiente
     Tickets, Salida:secuencia de caracteres
-    t, m1, m2: Caracter
-    TotalVend, TotalEven, TotalGene: N(3) 
-    PorcVed, PorcEven: Real
+    Ti, Mes1, Mes2: Caracter
+    TotalVend, Even1, Even2, Even3: N(3) 
+    PorcEven1, PorcEven2, PorcEven3: Real
+    SeGuarda:Booleano
+    Contador:=N(1)
    
+   Funcion Aprobar (SecEntr:Secuencia de caracteres; VEntra, Mes1Entra, Mes2,Entra:Caracter): Booleano es
+        Ambiente
+            Aux1, Aux2: Caracter
+
+        Proceso
+            Avz(SecEntr, VEntr)
+            Avz(SecEntr, VEntr)
+            Si VEntra=Mes1Entra entonces
+                Aux1:=Ventr
+                Avz(SecEntr, VEntr)
+            Contrario
+                Avz(SecEntr,VEntr)
+            Fin_Si
+            Si VEntra=Mes2Entra entonces
+                Aux2:=Ventr
+            Fin_Si
+            Si (Aux1=Mes1Entra) y (Aux2=Mes2Entra) entonces
+                Aprobar:=Verdadero
+            Contrario
+                Aprobar:=Falso
+            Fin_Si
+    Fin_Funcion
+
    Proceso
     Arrancar(Tickets)
-    Avz(Tickets,t)
+    Avz(Tickets,Ti)
     Escribir("Por favor ingrese los 2 caracteres del mes que desea tratar")
-    Leer(m1,m2)
+    Leer(Mes1,Mes2)
     Crear(Salida)
+    Even1:=0
+    Even2:=0
+    Even3:=0
+    
 
     Mientras No FDS(Tickets) hacer
+        
+        Mientras Ti <> "#" hacer
+            Avz(Tickets,Ti)
+        Fin_Mientras
+
+        Avz(Tickets,Ti)
+
+        Mientras Ti <> "&" hacer
+            SeGuarda:=Aprobar(Tickets, Ti, Mes1, Mes2)  //Funcion para aprobar el guardado
+            
+            Si SeGuarda entones
+                Para Contador:=1 hasta 7 hacer      //Avanzar hasta el numero de evento
+                    Escribir(Salida, Ti)
+                    Avz(Tickets,Ti)
+                Fin_Para
+                
+                Segun Ti hacer
+                    1:Even1:=Even1+1; Escribir(Salida, Ti); Avz(Tickets,Ti)
+                    2:Even2:=Even2+1; Escribir(Salida, Ti); Avz(Tickets,Ti)
+                    3:Even3:=Even3+1; Escribir(Salida, Ti); Avz(Tickets,Ti)
+                Fin_Segun
+                
+                Repetir
+                    Escribir(Salida, Ti)
+                    Avz(Tickets,Ti)
+                    Escribir(Salida, Ti)
+                Hasta que Ti="!"
+            Contrario
+                Para Contador:=1 hasta 7 hacer      //Avanzar hasta el numero de evento
+                    Avz(Tickets,Ti)
+                Fin_Para
+               
+                Segun Ti hacer
+                    1:Even1:=Even1+1; Avz(Tickets,Ti)
+                    2:Even2:=Even2+1; Avz(Tickets,Ti)
+                    3:Even3:=Even3+1; Avz(Tickets,Ti)
+                Fin_Segun
+                
+                Repetir
+                    Avz(Tickets,Ti)
+                Hasta que Ti="!"
+            Fin_Si
+            
+            Avz(Tickets,Ti)
+        Fin_Mientras
+    Fin_Mientras
+
+    Cerrar(Salida)
+    Cerrar(Tickets)
+
+    TotalEven:=Even1+Even2+Even3
+    PorcEven1:=(Even1*100)/TotalEven
+    PorcEven2:=(Even2*100)/TotalEven
+    PorcEven3:=(Even3*100)/TotalEven
+
+    Escribir("El total de tickets vendidos es: ", TotalEven)
+    Escribir("El total de tickets vendidos para el evento 1 es ", Even1, " que representa un ", PorcEven1, "% del total")
+    Escribir("El total de tickets vendidos para el evento 2 es ", Even2, " que representa un ", PorcEven2, "% del total")
+    Escribir("El total de tickets vendidos para el evento 3 es ", Even3, " que representa un ", PorcEven3, "% del total")
+Fin_Accion

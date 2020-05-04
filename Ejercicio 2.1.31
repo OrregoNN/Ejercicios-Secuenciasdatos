@@ -55,7 +55,7 @@ Acción Ej2.1.31 es
             SeGuarda:=Aprobar(Tickets, Ti, Mes1, Mes2)  //Funcion para aprobar el guardado
             
             Si SeGuarda entones
-                Para Contador:=1 hasta 7 hacer      //Avanzar hasta el numero de evento
+                Para Contador:=1 hasta 8 hacer      //Avanzar hasta el numero de evento
                     Escribir(Salida, Ti)
                     Avz(Tickets,Ti)
                 Fin_Para
@@ -66,13 +66,13 @@ Acción Ej2.1.31 es
                     3:Even3:=Even3+1; Escribir(Salida, Ti); Avz(Tickets,Ti)
                 Fin_Segun
                 
-                Repetir
+                Mientras Ti<> "!" hacer
                     Escribir(Salida, Ti)
                     Avz(Tickets,Ti)
-                    Escribir(Salida, Ti)
-                Hasta que Ti="!"
+                Fin_Mientras
+                Escribir(Salida, Ti)  
             Contrario
-                Para Contador:=1 hasta 7 hacer      //Avanzar hasta el numero de evento
+                Para Contador:=1 hasta 8 hacer      //Avanzar hasta el numero de evento
                     Avz(Tickets,Ti)
                 Fin_Para
                
@@ -82,12 +82,12 @@ Acción Ej2.1.31 es
                     3:Even3:=Even3+1; Avz(Tickets,Ti)
                 Fin_Segun
                 
-                Repetir
+                Mientras Ti<>"!" hacer
                     Avz(Tickets,Ti)
-                Hasta que Ti="!"
+                Fin_Mientras
             Fin_Si
-            
-            Avz(Tickets,Ti)
+            Avz(Tickets, Ti)
+
         Fin_Mientras
     Fin_Mientras
 

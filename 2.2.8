@@ -1,0 +1,71 @@
+https://aed-frre.github.io/practica/2.2/#ejercicio-228
+
+Accion 228 es
+	Ambiente
+		Compras: Registro de
+			Nro_de_cliente:N(8)
+			Fecha_ultima_compra: registro de
+					Dia: 1..31
+					Mes: 1..12
+					Anio:N(4)
+				Fin_Registro
+			Monto:N(6)
+		Fin_Registro
+
+		Clientes: Registro de
+			Nro_de_cliente: N(8)
+			NombreyApellido: AN(20)
+			Domicilio:AN(20)
+			Telefono:N(7)
+			DNI:N(8)
+		Fin_Registro
+
+		Arch_Compras: Archivo de Compras
+		Arch_Clientes: Archivo de Clientes
+		Reg_Compras: Compras
+		Reg_Clientes: Clientes
+
+		Dia:1..31
+		Mes:1..12
+		Anio:N(4)
+		Monto:(6)
+
+	Proceso
+		Escribir("Este algoritmo crea un listado de clientes de acuerdo a una fecha y un monto ingresado")
+		Escribir("Ingrese el dia")
+		Leer(Dia)
+		Escribir("Ingrese el mes")
+		Leer(Mes)
+		Escribir("Ingrese el año")
+		Leer(Anio)
+		Escribir("Ingrese el Monto")
+		Leer(Monto)
+
+		Abrir/E:(Arch_Compras)
+		Abrir/E:(Arch_Clientes)
+		Leer(Arch_Compras, Reg_Compras)
+		Leer(Arch_Compras, Reg_Clientes)
+
+		Escribir("Apellido y Nombre", "Fecha de ultima compra", "Monto")
+		Escribir("----------------------------------------------------")
+
+		Mientras NFDA(Arch_Compras) hacer
+			Si (Dia<Reg_Compras.Fecha_ultima_compra.Dia) y (Mes<Reg_Compras.Fecha_ultima_compra.Mes) y (Anio<Reg_Compras.Fecha_ultima_compra.Anio) y (Monto<Reg_Compras.Monto) Entonces
+				
+				Si(Reg.Compras.Nro_de_cliente = Reg_Clientes.Nro_de_cliente) entonces
+					Escribir(Reg_Clientes.NombreyApellido, Reg_Compras.Fecha_ultima_compra, Reg_Compras.Monto)
+					Leer(Arch_Compras, Reg_Compras)
+					Leer(Arch_Compras, Reg_Clientes)
+				Fin_Si
+
+			Contrario
+				Leer(Arch_Compras, Reg_Compras)
+				Leer(Arch_Compras, Reg_Clientes)
+			Fin_Si
+		Fin_Mientras
+
+		Cerrar(Arch_Compras)
+		Cerrar(Arch_Clientes)
+Fin_Accion
+
+
